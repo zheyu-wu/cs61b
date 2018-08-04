@@ -81,8 +81,16 @@ public class IntList {
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        // First, we will find the tail of IntList A. Then we will concatenate B from there.
+        IntList ptrA = A;
+        while (ptrA.rest != null) {
+            ptrA = ptrA.rest;
+        }
+        /* At this point, ptr is at the last element. It's rest must be null. We will use its
+        * rest to point to IntList B*/
+        // To do this, we will traverse IntList B, and assign its elements one by one
+        ptrA.rest = B;
+        return A;
     }
 
     /**
@@ -90,8 +98,19 @@ public class IntList {
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList temp = new IntList();
+        IntList result = temp;
+        temp.first = A.first;
+        IntList ptr = A;
+        while (ptr.rest != null){
+            temp.rest = new IntList();
+            temp.rest.first = ptr.rest.first;
+
+            temp = temp.rest;
+            ptr = ptr.rest;
+        }
+        temp.rest = B;
+        return result;
     }
 
 
